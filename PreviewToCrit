@@ -1,0 +1,27 @@
+const char CombatHandler::PreviewToCrit(GenericCharacter* const _attacker, GenericCharacter* const _defender) {
+
+	//_attacker luck - _defender luck
+	char T_ToCritChance = _attacker->myStats[7] + _attacker->myWeapon->getMyStatByID(7);
+
+	//lucky charm
+	if (_attacker->myItem)
+		T_ToCritChance += _attacker->myItem->getMyStatByID(7);
+
+	//skills forthcoming
+
+	//defender stuff
+	T_ToCritChance -= _defender->myStats[7];
+
+	//possible defender doesn't have a weapon
+	if (_defender->myWeapon)
+		_defender->myWeapon->getMyStatByID(7);
+
+	//lucky charm
+	if (_defender->myItem)
+		T_ToCritChance -= _defender->myItem->getMyStatByID(7);
+
+	//skills forthcoming
+
+	return T_ToCritChance;
+
+}
