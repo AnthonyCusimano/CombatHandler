@@ -12,7 +12,7 @@ const char CombatHandler::PreviewToHit(GenericCharacter* const _attacker, Generi
 	//square avoid mod
 	T_ToHitChance -= this->myGridPointer->theGrid[(int)_defender->myPosition.x][(int)_defender->myPosition.y].getMyAvoidModifier();
 
-	std::cout << "The avoid modifier of the defender is " << (int)this->myGridPointer->theGrid[(int)_defender->myPosition.x][(int)_defender->myPosition.y].getMyAvoidModifier() << '\n';
+	std::cout << "The avoid modifier of the defender's square is " << (int)this->myGridPointer->theGrid[(int)_defender->myPosition.x][(int)_defender->myPosition.y].getMyAvoidModifier() << '\n';
 
 	//minus defender's weapon skill mod
 	//T_ToHitChance -= _defender->myWeapon->getMyStatByID(5);
