@@ -1,0 +1,32 @@
+const char CombatHandler::PreviewDamageCount(GenericCharacter* const _attacker, GenericCharacter* const _defender) {
+
+	//attacker's damage, his weapon's damage
+	char T_DamageDealt = _attacker->myStats[1] + _attacker->myWeapon->getMyStatByID(1);
+
+	//std::cout << "attacker's raw damage is " << (int)T_DamageDealt << '\n';
+
+	//currently really bad if they're holding a weapon
+	//can add an internal if for if the item is a weapon
+	if (_attacker->myItem)
+		T_DamageDealt += _attacker->myItem->getMyStatByID(1);
+
+	//GITHUB: Some code here removed from github version
+	
+	T_DamageDealt -= _defender->myStats[2];
+
+	//std::cout << "attacker's damage before defender's item is taken into account is " << (int)T_DamageDealt << '\n';
+
+	//shield check
+	//if _defender has an item, use it's defense rating to reduce damage
+	//BUG: Known issue: is a weapon w/ a defense rating is _defender->myItem that weapon's defense rating will be applied
+	if (_defender->myItem)
+		T_DamageDealt -= _defender->myItem->getMyStatByID(2);
+
+	//std::cout << "Damage dealt is apparently " << (int)T_DamageDealt << '\n';
+
+	if (T_DamageDealt > 0)
+		return T_DamageDealt;
+
+	else return 0;
+
+}
