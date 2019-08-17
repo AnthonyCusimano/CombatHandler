@@ -1,0 +1,24 @@
+const char CombatHandler::PreviewToHit(GenericCharacter* const _attacker, GenericCharacter* const _defender) {
+
+	//attacker's skill
+	char T_ToHitChance = _attacker->myStats[5];
+
+	//attacker's weapon skill mod
+	T_ToHitChance += _attacker->myWeapon->getMyStatByID(5);
+
+	//minus defender's skill
+	T_ToHitChance -= _defender->myStats[5];
+
+	//square avoid mod
+	T_ToHitChance -= this->myGridPointer->theGrid[(int)_defender->myPosition.x][(int)_defender->myPosition.y].getMyAvoidModifier();
+
+	std::cout << "The avoid modifier of the defender is " << (int)this->myGridPointer->theGrid[(int)_defender->myPosition.x][(int)_defender->myPosition.y].getMyAvoidModifier() << '\n';
+
+	//minus defender's weapon skill mod
+	//T_ToHitChance -= _defender->myWeapon->getMyStatByID(5);
+	
+	std::cout << "They needed to roll lower than a " << T_ToHitChance << " to hit\n";
+
+	return (T_ToHitChance);
+
+}
