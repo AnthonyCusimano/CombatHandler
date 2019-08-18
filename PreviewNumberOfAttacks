@@ -1,0 +1,14 @@
+const char CombatHandler::PreviewNumberOfAttacks(GenericCharacter* const _attacker, GenericCharacter* const _defender) {
+
+	//by default, you attack once
+	char T_Return = 1;
+
+	//skills?
+	if (_attacker->myStats[6] > _defender->myStats[6] + ::S_DoubleThresholdDefault)
+		T_Return *= 2;
+
+	//weapons?
+
+	return T_Return;
+
+}
