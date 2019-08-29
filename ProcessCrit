@@ -1,0 +1,16 @@
+const char CombatHandler::ProcessCrit(GenericCharacter* const _attacker, GenericCharacter* const _defender, char _damageAmount) {
+	
+	_damageAmount *= 2;
+
+	//weapons
+	if (_attacker->myWeapon->getMyID() == 48) {
+
+
+
+	}
+
+	//items, and skills
+
+	return _damageAmount;
+
+}
