@@ -23,17 +23,17 @@ public:
 	/**
 	
 	*/
-	void AllyArmyUpkeepEffects()const;
+	void AllyArmyUpkeepEffects(Player *_thePlayer)const;
 
 	/**
 	
 	*/
-	void EnemyArmyEndStepEffects()const;
+	void EnemyArmyEndStepEffects(BattleChapter* _theChapter)const;
 
 	/**
 	
 	*/
-	void AllyArmyEndStepEffects()const;
+	void AllyArmyEndStepEffects(Player* _thePlayer)const;
 
 	/**
 	
