@@ -23,6 +23,16 @@ void TurnStateManager::EnemyArmyUpkeepEffects(BattleChapter* _theChapter)const {
 
 }
 
+void TurnStateManager::ProcessSquareUpkeepEffects(GridSquare const _square, GenericCharacter* const _occupant)const {
+
+	if (_square.myType == SQUARE_TYPE_BLESSED) {
+
+		//heal :)
+
+	}
+
+}
+
 
 TurnStateManager::~TurnStateManager() {
 
