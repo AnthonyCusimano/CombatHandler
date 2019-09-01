@@ -10,7 +10,7 @@ TurnStateManager::TurnStateManager() {
 void TurnStateManager::EnemyArmyUpkeepEffects(BattleChapter* _theChapter)const {
 
 	for (int i = 0; i < _theChapter->myArmy.size(); ++i) {
-		
+
 		//errors because getItem returns a const Item
 		_theChapter->myArmy[i]->myItem->ProcessUpkeepAffect();
 		_theChapter->myArmy[i]->myWeapon->ProcessUpkeepAffect();
@@ -18,6 +18,39 @@ void TurnStateManager::EnemyArmyUpkeepEffects(BattleChapter* _theChapter)const {
 		//skills
 
 		//tiles
+
+	}
+
+}
+
+void TurnStateManager::AllyArmyUpkeepEffects(Player* _thePlayer) const{
+
+	for (int i = 0; i < _thePlayer->roster1.size(); ++i){
+
+		_thePlayer->roster1[i]->myItem->ProcessUpkeepAffect();
+		_thePlayer->roster1[i]->myWeapon->ProcessUpkeepAffect();
+
+	}
+
+}
+
+void TurnStateManager::EnemyArmyEndStepEffects(BattleChapter* _theChapter)const {
+
+	for (int i = 0; i < _theChapter->myArmy.size(); ++i) {
+
+		_theChapter->myArmy[i]->myItem->ProcessEndStepAffect();
+		_theChapter->myArmy[i]->myWeapon->ProcessEndStepAffect();
+
+	}
+
+}
+
+void TurnStateManager::AllyArmyEndStepEffects(Player* _thePlayer)const {
+
+	for (int i = 0; i < _thePlayer->roster1.size(); ++i) {
+
+		_thePlayer->roster1[i]->myItem->ProcessEndStepAffect();
+		_thePlayer->roster1[i]->myWeapon->ProcessEndStepAffect();
 
 	}
 
