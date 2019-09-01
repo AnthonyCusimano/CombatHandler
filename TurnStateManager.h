@@ -18,7 +18,7 @@ public:
 	/**
 	
 	*/
-	void EnemyArmyUpkeepEffects()const;
+	void EnemyArmyUpkeepEffects(BattleChapter *_theChapter)const;
 
 	/**
 	
@@ -34,6 +34,11 @@ public:
 	
 	*/
 	void AllyArmyEndStepEffects()const;
+
+	/**
+	
+	*/
+	void ProcessSquareUpkeepEffects(GridSquare const _square, GenericCharacter* const _occupant)const;
 
 	/**
 	
