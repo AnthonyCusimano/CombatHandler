@@ -1,0 +1,37 @@
+/**	
+returns damage dealt by attack
+*/
+const char CombatHandler::ProcessAttack(GenericCharacter * _attacker, GenericCharacter * _defender) {
+
+	char T_DamageDealt = _attacker->myStats[1] + _attacker->myWeapon->getMyStatByID(1);
+
+	std::cout << "attacker's raw damage is " << (int)T_DamageDealt << '\n';
+
+	//inner if is attempt to add an internal if for if the item is a weapon
+	if (_attacker->myItem) {
+
+		//not a weapon check sucks lol
+		//TEST
+		if (!((_attacker->myItem->myItemTags & 0b01000000) || (_attacker->myItem->myItemTags & 0b00100000) || (_attacker->myItem->myItemTags & 0b00010000))) {
+
+			T_DamageDealt += _attacker->myItem->getMyStatByID(1);
+
+		}	
+
+	}
+
+	//spellblade check
+	//GITHUB code and comments removed
+
+	std::cout << "attacker's damage before defender's item is taken into account is " << (int)T_DamageDealt << '\n';
+
+	if (_defender->myItem)
+		T_DamageDealt -= _defender->myItem->getMyStatByID(2);
+
+	std::cout << "Damage dealt is apparently " << (int)T_DamageDealt << '\n';
+
+	if (T_DamageDealt > 0)
+		return T_DamageDealt;
+
+	else return 0;
+}
