@@ -7,7 +7,8 @@ const char CombatHandler::PreviewToCrit(GenericCharacter* const _attacker, Gener
 	if (_attacker->myItem)
 		T_ToCritChance += _attacker->myItem->getMyStatByID(7);
 
-	//skills forthcoming
+	if (_attacker->mySkillFlags[1] & 1)
+		T_ToCritChance += 5;
 
 	//defender stuff
 	T_ToCritChance -= _defender->myStats[7];
@@ -20,7 +21,7 @@ const char CombatHandler::PreviewToCrit(GenericCharacter* const _attacker, Gener
 	if (_defender->myItem)
 		T_ToCritChance -= _defender->myItem->getMyStatByID(7);
 
-	//skills forthcoming
+	//skill for reducing crit chance in enemies?
 
 	return T_ToCritChance;
 
